@@ -1,0 +1,6 @@
+
+*.pyc
+__pycache__/*
+cmac_secret.txt
+.vscode/*
+
