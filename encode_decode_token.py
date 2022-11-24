@@ -1,24 +1,16 @@
-
+from flask import Flask, render_template, request, flash, url_for, session, redirect
+from forms import *
+import time
 from Crypto.Hash import CMAC
 from Crypto.Cipher import AES
 import base64
-import time
-
-
+from authlib.integrations.flask_client import OAuth
+import os
+import requests
+import json
+import datetime
+from datetime import timedelta
 from base58 import b58decode, b58encode
-
-
-cmac_read = False
-cmac_secret = b''
-def get_serect():
-    global cmac_read;
-    global cmac_secret;
-    if not cmac_read:
-        cmac_read = True
-        with open("cmac_secret.txt", "r") as f:
-            cmac_secret = f.read().strip('\n').encode()
-    return cmac_secret
-
 
 
 def encrypt_token(ts,qq_num,cmac_secret):
@@ -59,11 +51,3 @@ def decode_and_verify(token,ts,ts_tolerance,qq_num,cmac_secret):
             return True
     else:
         return False
-
-
-def verify(Token, qqid):
-    return decode_and_verify(Token, time.time(), 3600, qqid, get_serect())
-
-
-
-

@@ -185,8 +185,25 @@ def set_group_card(group_id, user_id, card = ""):
 
 
 
+def get_guild_roles(guild_id : str):
+    url = host_addr + 'get_guild_roles'
+    d = {'guild_id':guild_id}
+    r = requests.post(url, data=d)
+    print(r.text)
+    return json.loads(r.text)["data"];
 
 
+def send_guild_channel_msg(guild_id : str, channel_id : str, message : str):
+    url = host_addr + 'send_guild_channel_msg'
+    d = {'guild_id':guild_id,'channel_id':channel_id,'message':message }
+    r = requests.post(url, data=d)
+    return json.loads(r.text)["data"];
 
 
-    
+def set_guild_member_role(guild_id : str, set : bool, role_id : str, users):
+    url = host_addr + 'set_guild_member_role'
+    d = {'guild_id':guild_id,'set':set,'role_id':role_id,'users':users }
+    print(d)
+    r = requests.post(url, data=d)
+    return json.loads(r.text)["data"];
+

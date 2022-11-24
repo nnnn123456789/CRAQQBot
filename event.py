@@ -14,7 +14,6 @@ def on_group_message(m):
     pass
 
 
-
 def on_private_message(m):
     pass
 
