@@ -8,6 +8,8 @@ import time
 import craverify
 
 
+
+
 def on_group_message(m):
     pass
 
@@ -78,10 +80,10 @@ def on_private_message_recall(m):
 
 
 
-
+def on_heartbeat(m):
+    pass
 
 
 def on_heartbeat(m):
     pass
-
 

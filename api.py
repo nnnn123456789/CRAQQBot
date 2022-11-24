@@ -183,6 +183,7 @@ def set_group_card(group_id, user_id, card = ""):
     return json.loads(r.text)["data"];
 
 
+
 def get_guild_roles(guild_id : str):
     url = host_addr + 'get_guild_roles'
     d = {'guild_id':guild_id}

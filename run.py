@@ -5,10 +5,9 @@ import json
 
 from on_channel_message import main as on_channel_message;
 
+
 def on_message(ws, message):
     msg = json.loads(message)
-    #print(msg);
-    #print(" ");
     if (msg["post_type"] == "message"):
         if(msg["message_type"] == "private"):
             on_private_message(msg);
@@ -17,7 +16,7 @@ def on_message(ws, message):
         elif(msg["message_type"] == "guild"):
             on_channel_message(msg);
     elif(msg["post_type"] == "notice"):
-        #print(msg);
+
         if(msg["notice_type"] == "group_admin"):
             on_group_manager_change(msg);
         elif(msg["notice_type"] == "group_increase"):
@@ -44,11 +43,8 @@ def on_message(ws, message):
 
 
 def on_error(ws, error):
-    #print(ws)
-    #print(error)
-    pass
 
-    
+    pass
 
 
 def on_close(ws):
