@@ -206,5 +206,3 @@ def set_guild_member_role(guild_id : str, set : bool, role_id : str, users):
     r = requests.post(url, data=d)
     return json.loads(r.text)["data"];
 
-
-    

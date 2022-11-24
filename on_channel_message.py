@@ -39,7 +39,7 @@ def SUSTech_auth(args, guild_id, channel_id, user_id):
                 if i["role_name"] == "已认证":
                     aim_role_id_s = (i["role_id"])
                     print(i)
-            api.set_guild_member_role(str(guild_id), True, aim_role_id_s, str(user_id))
+            api.set_guild_member_role(str(channel_id), True, aim_role_id_s, [str(user_id)])
             return "已获得认证用户权限"
         else:
             return "[CQ:at,qq=%s] 无法验证您的南科身份, 请重试. \n您的本频道ID为%s, 访问https://mirrors.sustech.edu.cn/qqverify , 填写本频道ID, 获得验证Token. 使用\"#南科认证 Token\"认证南科身份, 访问频道内容. " % (str(user_id), ID_s)
