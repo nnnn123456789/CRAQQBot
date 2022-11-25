@@ -7,6 +7,7 @@ import time
 
 from base58 import b58decode, b58encode
 
+
 cmac_read = False
 cmac_secret = b''
 def get_serect():
@@ -17,7 +18,6 @@ def get_serect():
         with open("cmac_secret.txt", "r") as f:
             cmac_secret = f.read().strip('\n').encode()
     return cmac_secret
-
 
 
 
@@ -63,25 +63,7 @@ def decode_and_verify(token,ts,ts_tolerance,qq_num,cmac_secret):
 
 def verify(Token, qqid):
     return decode_and_verify(Token, time.time(), 3600, qqid, get_serect())
-    try:
-        raw_token = base64.b64decode(Token).decode()
-        timestamp_s, mac = raw_token.split("|")
-    except:
-        return False
-    if int(timestamp_s) < int(time.time()) - 3600:
-        return False
-
-    msg = str(qqid) + "|" + str(int(timestamp_s))
-    cmac_secret = get_serect();
-    cobj = CMAC.new(cmac_secret, ciphermod=AES)
-    cobj.update(msg.encode())
-    return cobj.hexdigest()[0:9] == mac
 
 
 
 
-# def Test():
-#     qqid = 12345
-#     timestamp = '10000'
-#     Token = generate_token(qqid, timestamp)
-#     return verify(Token, qqid)

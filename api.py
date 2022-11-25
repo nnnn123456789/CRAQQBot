@@ -184,6 +184,7 @@ def set_group_card(group_id, user_id, card = ""):
 
 
 
+
 def get_guild_roles(guild_id : str):
     url = host_addr + 'get_guild_roles'
     d = {'guild_id':guild_id}

@@ -54,8 +54,8 @@ def on_request_group_invite(m):
     sub_type =  m["sub_type"]
 
     if (sub_type == "invite"):
-        set_group_add_request(flag, sub_type, False, reason = "禁止邀请加群");
-        print("禁止邀请加群");
+        #set_group_add_request(flag, sub_type, False, reason = "禁止邀请加群");
+        print("邀请加群忽略");
         return
 
     comment = comment.split('\n')[1];
@@ -66,8 +66,8 @@ def on_request_group_invite(m):
        print("放人成功");
        return   
         
-    set_group_add_request(flag, sub_type, False, reason = "无法识别加群验证");
-    print("拒绝加群");
+    #set_group_add_request(flag, sub_type, False, reason = "无法识别加群验证, 请访问https://mirrors.sustech.edu.cn/qqverify 获取加群Token");
+    print("加群未通过");
     pass
 
 
@@ -76,11 +76,6 @@ def on_group_message_recall(m):
 
 
 def on_private_message_recall(m):
-    pass
-
-
-
-def on_heartbeat(m):
     pass
 
 
